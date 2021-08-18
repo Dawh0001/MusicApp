@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="MusicApp.AddGenre"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="using:MusicApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <muxc:NavigationView x:Name="nvSample" Grid.Column="1" Grid.Row="3">
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="Lists" Icon="Read" ToolTipService.ToolTip="Lists" Tag="Home">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Content="List of Records" Icon="Rotate" ToolTipService.ToolTip="Records" Tag="ViewRecords" Tapped="mnuViewRecords_Tapped"/>
+                        <muxc:NavigationViewItem Content="List of Artists" Icon="Contact" ToolTipService.ToolTip="Artists" Tag="ViewArtists" Tapped="mnuViewArtists_Tapped"/>
+                        <muxc:NavigationViewItem Content="List of Genres" Icon="List" ToolTipService.ToolTip="Genres" Tag="ViewGenres" Tapped="mnuViewGenres_Tapped"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Create" Icon="Add" ToolTipService.ToolTip="Add" Tag="SamplePage2">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Content="Add Record" Icon="Rotate" ToolTipService.ToolTip="Add Record" Tag="AddRecord" Tapped="mnuAddRecord_Tapped"/>
+                        <muxc:NavigationViewItem Content="Add Artist" Icon="Contact" ToolTipService.ToolTip="Add Artist" Tag="AddArtist" Tapped="mnuAddArtist_Tapped"/>
+                        <muxc:NavigationViewItem Content="Add Genre" Icon="List" ToolTipService.ToolTip="Add Genre" Tag="AddGenre" Tapped="mnuAddGenre_Tapped"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Edit" Icon="Edit" ToolTipService.ToolTip="Edit" SelectsOnInvoked="False">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Content="Edit Records" Icon="Rotate" ToolTipService.ToolTip="Create new" Tag="SamplePage5" Tapped="mnuUpdateRecord_Tapped"/>
+                        <muxc:NavigationViewItem Content="Edit Artists" Icon="Contact" ToolTipService.ToolTip="Upload file" Tag="SamplePage6" Tapped="mnuUpdateArtist_Tapped"/>
+                        <muxc:NavigationViewItem Content="Edit Genres" Icon="List" ToolTipService.ToolTip="Upload file" Tag="SamplePage6" Tapped="mnuUpdateGenre_Tapped"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+            <Frame x:Name="contentFrame">
+                <StackPanel Margin="10,10,0,0">
+                    <TextBlock Text="Create a new genre" HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,30"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock  Text="Name"  Width="70" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                        <TextBox Name="inputName" Width="220"  Margin="0,10,10,10"/>
+                    </StackPanel>
+                    <Button Name="btnSave" Content="Save genre" Click="BtnSave_Click" HorizontalAlignment="Center"/>
+                    <StackPanel x:Name="loadingPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+                        <ProgressRing x:Name="progRing" IsActive="True" Width="100" Height="100"/>
+                        <TextBlock x:Name="loadingText" Text="Saving please wait" Visibility="Visible"/>
+                    </StackPanel>
+                </StackPanel>
+            </Frame>
+        </muxc:NavigationView>
+    </Grid>
+</Page>
